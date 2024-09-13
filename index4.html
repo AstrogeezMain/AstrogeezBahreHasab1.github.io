@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-family: "Courier New", Courier, monospace;
+        overflow-x: hidden;
+      }
+      #main {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><u>ዕለት ማወቂያ በAstroግእዝ</u></h1>
+    <div id="main">
+      <div style="padding: 50px" style="margin-right: 20px">
+        <p>ቀን</p>
+        <input type="number" id="input1" required min="0" />
+        <p>ወር</p>
+        <input type="number" id="input2" required min="0" />
+        <p>ዓመት</p>
+        <input type="number" id="input3" required min="0" />
+        <button
+          style="
+            display: block;
+            margin-top: 20px;
+            padding: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+          "
+          onclick="work()
+          Nana.innerHTML = ''"
+        >
+          ስራ
+        </button>
+        <button
+          style="
+            display: block;
+            font-size: 15px;
+            margin-top: 20px;
+            padding: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+          "
+          onclick="bust()"
+        >
+          አሰራሩ
+        </button>
+      </div>
+      <div style="padding: 150px; font-size: 50px">
+        <p style="margin-top: 50px; display: inline-block" id="para"></p>
+      </div>
+    </div>
+
+    <p style="margin-left: 20px; margin-bottom: 100px" id="nana"></p>
+
+    <script>
+      const day = document.getElementById("input1");
+      const mounth = document.getElementById("input2");
+      const year = document.getElementById("input3");
+      const Para = document.getElementById("para");
+      const Nana = document.getElementById("nana");
+
+      function work() {
+        if (
+          day.value == "" ||
+          mounth.value == "" ||
+          year.value == "" ||
+          day.value >= 31 ||
+          mounth.value >= 14
+        ) {
+          Para.innerHTML = "?";
+        } else {
+          const dayVal = day.value;
+          const mounthVal = mounth.value;
+          const yearVal = year.value;
+
+          const MounthPro = mounthVal * 2;
+
+          const ametesehay = Number(yearVal) % 28;
+          const mrya = Number(ametesehay);
+          const segr = Math.floor(Number(ametesehay) / 4);
+          const yon = (Number(mrya) + Number(segr)) % 7;
+
+          const result = (Number(MounthPro) + Number(dayVal) + Number(yon)) % 7;
+          // const result = Number(dayVal) + Number(MounthPro);
+          console.log(result);
+
+          let me = "";
+          if (result == 1) {
+            me = "እሁድ";
+          } else if (result == 2) {
+            me = "ሰኞ";
+          } else if (result == 3) {
+            me = "ማክሰኞ";
+          } else if (result == 4) {
+            me = "ረቡዕ";
+          } else if (result == 5) {
+            me = "ሐሙስ";
+          } else if (result == 6) {
+            me = "ዐርብ";
+          } else if (result == 0) {
+            me = "ቅዳሜ";
+          } else {
+            me = "Error";
+          }
+          Para.innerHTML = me;
+        }
+      }
+      let x = true;
+      function bust() {
+        if (
+          day.value == "" ||
+          mounth.value == "" ||
+          year.value == "" ||
+          day.value >= 31 ||
+          mounth.value >= 14
+        ) {
+          Para.innerHTML = "?";
+        } else {
+          const dayVal = day.value;
+          const mounthVal = mounth.value;
+          const yearVal = year.value;
+
+          const MounthPro = mounthVal * 2;
+
+          const ametesehay = Number(yearVal) % 28;
+          const mrya = Number(ametesehay);
+          const segr = Math.floor(Number(ametesehay) / 4);
+          const yon = (Number(mrya) + Number(segr)) % 7;
+
+          const result = (Number(MounthPro) + Number(dayVal) + Number(yon)) % 7;
+          // const result = Number(dayVal) + Number(MounthPro);
+          console.log(result);
+
+          let me = "";
+          if (result == 1) {
+            me = "እሁድ";
+          } else if (result == 2) {
+            me = "ሰኞ";
+          } else if (result == 3) {
+            me = "ማክሰኞ";
+          } else if (result == 4) {
+            me = "ረቡዕ";
+          } else if (result == 5) {
+            me = "ሐሙስ";
+          } else if (result == 6) {
+            me = "ዐርብ";
+          } else if (result == 0) {
+            me = "ቅዳሜ";
+          } else {
+            me = "Error";
+          }
+          if ((x = true)) {
+            Nana.innerHTML = `አንድን ዕለት ለማግኘት ሠርቀ ዕለት + ጥንተ ዮን + ዐጽፈ አውራኅ በማስላት ማግኘት እንችላለን ።
+        <p>ጥንተ ዮን ለማግኘት (ዕለተ ምርያ + ዕለተ ሠርግ)/7 በማድረግ እናገኛለን ።</p>
+         <p>ዕለተ ምርያ እና ዕለተ ሠግርን ለማግኘት መጀመርያ ከዐውደ ፀሓይ ዓመተ ፀሓይ ማግኘት ይኖርብናል ።</p>
+        <p>ዐውደ ፀሓይ ደግሞ የሚገኘው ከዓመተ ምህረት ስለሆነ እርሶ ያስገቡት ${yearVal} ለ28 በማካፈል እናገኛለን ።
+          ይህም ${Math.floor(yearVal / 28)} ድርሻ እናገኝና ቀሪ ${
+              yearVal % 28
+            } እናገኛለን ።</p> ቀሪው ዐመተ ፀሓይ ይባላል ። ዕለተ ምርያ እና ዕለተ ሠግርን ለማግኘት የምንጠቀመውም ይህን ዐመተ ፀሓይ ነው ።
+         <p>ዕለተ ምርያ ከዐመተ ፀሓይ ጋር አንድ ነው ። ዕለተ ሠግርን ለማግኘት ግን ዐመተ ፀሓይን ለአራት አካፍለን ድርሻውን ማግኘት አለብን ። </p>
+         በዚህ መሰረት ${yearVal % 28}ን ለ4 ስናካፍል ድርሻ ${Math.floor(
+              (yearVal % 28) / 4
+            )} እናገኛለን ።
+
+       <p> አሁን ጥንት ዮን ለማግኘት (ዕለተ ምርያ + ዕለተ ሠርግ)/7 በማድረግ የዚህን ቀሪ ማግኘት ነው ።
+         ይህ ማለትም (${Math.floor((yearVal % 28) / 4)} + ${
+              yearVal % 28
+            }) / 7 በማድረግ ቀሪ ${
+              (Number(mrya) + Number(segr)) % 7
+            } እናገኛለን ። ጥንተ ዮን ${
+              (Number(mrya) + Number(segr)) % 7
+            } ነው ማለት ነው ። </p>
+        <p>ዐጽፈ አውራኅ ደግሞ ወሩን ለሁለት አባዝተን እናገኛለን ። ይህም ${mounthVal}*2 = ${
+              mounthVal * 2
+            } <- ዐጽፈ አውራኅ</p>
+         <p> በመጨረሻም ቀመረ ዕለቱን ስንሰራው ሠርቀ ዕለት + ጥንተ ዮን + ዐጽፈ አውራኅ => ${dayVal} + ${
+              (Number(mrya) + Number(segr)) % 7
+            } + ${mounthVal * 2} = ${result} ይሰጠናል ። </p>
+         <p>በጥንተ ዕለት መሰረት ${result}ኛ ዕለት ${me} ነው ።</p>
+        `;
+
+            x = false;
+          } else {
+            Nana.innerHTML = "";
+            x = true;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
